@@ -1,0 +1,127 @@
+<html>
+
+<head>
+
+    <style>
+        table {
+            margin:5%;
+            background-color: linen;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td {
+            font-size: 77;
+        }
+    </style>
+
+    <title>
+        XO Game
+    </title>
+</head>
+
+<body id="BodyId">
+    <div id="divGame" ">
+    <table border=" 1px" width="60%" height="60%" style="text-align: center ; ">
+        <tr>
+            <td id="11" onclick="XO(11)" width="20%" height="20%">&nbsp;</td>
+            <td id="12" onclick="XO(12)" width="20%" height="20%">&nbsp;</td>
+            <td id="13" onclick="XO(13)" width="20%" height="20%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td id="21" onclick="XO(21)" width="20%" height="20%">&nbsp;</td>
+            <td id="22" onclick="XO(22)" width="20%" height="20%">&nbsp;</td>
+            <td id="23" onclick="XO(23)" width="20%" height="20%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td id="31" onclick="XO(31)" width="20%" height="20%">&nbsp;</td>
+            <td id="32" onclick="XO(32)" width="20%" height="20%">&nbsp;</td>
+            <td id="33" onclick="XO(33)" width="20%" height="20%">&nbsp;</td>
+        </tr>
+        </table>
+        <script>
+            var turn = 1;
+            function XO(id) {
+                if (document.getElementById(id).innerHTML == "&nbsp;") {
+                    if ((turn % 2) != 0) {
+                        document.getElementById(id).innerHTML = "X";
+                    }
+                    else {
+                        document.getElementById(id).innerHTML = "O";
+                    }
+                    if (IsWinner())
+                        PlayNewGame();
+                    turn++;
+                }
+            }
+
+            function PlayNewGame() {
+                var continuation = window.confirm(" Do you want to play a new game;");
+                if (continuation) {
+                    document.getElementById("divGame").innerHTML = null;
+                    location.reload(true);
+
+                } else {
+                    window.close();
+                }
+            }
+            function IsWinner() {
+                if (turn > 4) {
+
+                    if (document.getElementById(11).innerHTML == document.getElementById(12).innerHTML &&
+                        document.getElementById(11).innerHTML == document.getElementById(13).innerHTML &&
+                        document.getElementById(11).innerHTML != "&nbsp;") {
+                        window.alert(document.getElementById(11).innerHTML + "  is Winner");
+                        return true;
+                    }
+                    if (document.getElementById(21).innerHTML == document.getElementById(22).innerHTML &&
+                        document.getElementById(21).innerHTML == document.getElementById(23).innerHTML &&
+                        document.getElementById(22).innerHTML != "&nbsp;") {
+                        window.alert(document.getElementById(22).innerHTML + "  is Winner");
+                        return true;
+                    }
+                    if (document.getElementById(31).innerHTML == document.getElementById(32).innerHTML &&
+                        document.getElementById(32).innerHTML == document.getElementById(33).innerHTML &&
+                        document.getElementById(33).innerHTML != "&nbsp;") {
+                        window.alert(document.getElementById(33).innerHTML + "  is Winner");
+                        return true;
+                    }
+
+                    if (document.getElementById(11).innerHTML == document.getElementById(21).innerHTML &&
+                        document.getElementById(11).innerHTML == document.getElementById(31).innerHTML &&
+                        document.getElementById(11).innerHTML != "&nbsp;") {
+                        window.alert(document.getElementById(11).innerHTML + "  is Winner");
+                        return true;
+                    }
+                    if (document.getElementById(12).innerHTML == document.getElementById(22).innerHTML &&
+                        document.getElementById(22).innerHTML == document.getElementById(32).innerHTML &&
+                        document.getElementById(22).innerHTML != "&nbsp;") {
+                        window.alert(document.getElementById(22).innerHTML + "  is Winner");
+                        return true;
+                    }
+                    if (document.getElementById(13).innerHTML == document.getElementById(23).innerHTML &&
+                        document.getElementById(23).innerHTML == document.getElementById(33).innerHTML &&
+                        document.getElementById(33).innerHTML != "&nbsp;") {
+                        window.alert(document.getElementById(33).innerHTML + "  is Winner");
+                        return true;
+                    }
+
+                    if (document.getElementById(11).innerHTML == document.getElementById(22).innerHTML &&
+                        document.getElementById(22).innerHTML == document.getElementById(33).innerHTML &&
+                        document.getElementById(22).innerHTML != "&nbsp;") {
+                        window.alert(document.getElementById(22).innerHTML + "  is Winner");
+                        return turn;
+                    }
+                    if (document.getElementById(13).innerHTML == document.getElementById(22).innerHTML &&
+                        document.getElementById(22).innerHTML == document.getElementById(31).innerHTML &&
+                        document.getElementById(22).innerHTML != "&nbsp;") {
+                        window.alert(document.getElementById(22).innerHTML + "  is Winner");
+                        return turn;
+                    }
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>
