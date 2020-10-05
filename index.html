@@ -1,0 +1,48 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>TIC TAC TOE</title>
+    <script>
+        function XO(a) {
+
+            var a=a;
+            console.log(a);
+        }
+    </script>
+
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <div id="game-page">
+        <TAble border="1px" width="60%" height="60%" style="text-align: center; background-color: aquamarine;">
+            <script>
+
+                var idArray = [];
+                var x = 3;
+                var temp = "";
+                k=0;
+                for (var i = 1; i <= x; i++) {
+                    temp += "<tr>";
+                    for (var j = 1; j <= x; j++) {
+                        idd =i * 10 + j;
+                        idArray[(i * k) + (j - 1)] = i * 10 + j;;
+
+                        temp += "<td  onclick = XO(idArray[(i*k)+(j-1)])>" + "&nbsp";
+                    }
+                    temp += "</tr>";
+                    k++;
+                }
+                document.getElementById("game").innerHTML = temp;
+            </script>
+
+        </TAble>
+    </div>
+
+
+</body>
+
+</html>
